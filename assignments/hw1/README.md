@@ -30,6 +30,9 @@ python run_point_transform.py
 ```
 
 ## Results (need add more result images)
+
+Please refer to the MOV video files in the pics folder for detailed results.
+
 ### Basic Transformation
 <img src="pics/result_1.png" alt="alt text" width="800">
 
