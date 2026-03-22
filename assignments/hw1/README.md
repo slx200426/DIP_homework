@@ -31,10 +31,14 @@ python run_point_transform.py
 
 ## Results (need add more result images)
 ### Basic Transformation
-<img src="pics/global.mov" alt="alt text" width="800">
+<img src="pics/result_1.png" alt="alt text" width="800">
+
+<img src="pics/result_2.png" alt="alt text" width="800">
+
+<img src="pics/result_3.png" alt="alt text" width="800">
 
 ### Point Guided Deformation:
-<img src="pics/point.mov" alt="alt text" width="800">
+<img src="pics/result_4.png" alt="alt text" width="800">
 
 ## Acknowledgement
 
