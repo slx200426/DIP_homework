@@ -29,7 +29,7 @@ To run point guided transformation, run:
 python run_point_transform.py
 ```
 
-## Results (need add more result images)
+## Results
 
 Please refer to the MOV video files in the pics folder for detailed results.
 
