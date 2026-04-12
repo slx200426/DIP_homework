@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyTorch model checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# Pix2Pix dataset folders
+**/Pix2Pix/datasets/
+**/Pix2Pix/datasets/facades/
+**/Pix2Pix/datasets/facades/train/
+**/Pix2Pix/datasets/facades/val/
+**/Pix2Pix/datasets/facades/test/
+
+# Optional logs
+*.log
