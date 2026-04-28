@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 
 def euler_to_rotation_matrix(euler):
-    """欧拉角转旋转矩阵 (XYZ顺序)"""
     if euler.dim() == 1:
         euler = euler.unsqueeze(0)
         squeeze = True
@@ -43,10 +42,8 @@ def euler_to_rotation_matrix(euler):
 
 
 def project_points(points3d, R, T, focal, cx, cy):
-    """3D点投影到2D (带数值稳定性)"""
     Xc = (R @ points3d.T).T + T
 
-    # 防止除零：深度必须 > 0.1
     z = torch.clamp(Xc[:, 2], min=0.1)
 
     u = -focal * Xc[:, 0] / z + cx
@@ -78,20 +75,15 @@ def main():
     print(f"Loaded {num_views} views, {num_points} points")
     print(f"Total observations: {visibility.sum().item():.0f}")
 
-    # ========== 初始化参数 ==========
-
     focal = torch.tensor([1000.0], requires_grad=True)
 
-    # 更小的初始旋转
     euler_angles = torch.randn(num_views, 3) * 0.01
     euler_angles = euler_angles.requires_grad_(True)
 
-    # 相机位置：固定深度，避免初始化太复杂
     translations = torch.zeros(num_views, 3)
-    translations[:, 2] = -2.5  # 所有相机深度相同
+    translations[:, 2] = -2.5  
     translations = translations.requires_grad_(True)
 
-    # 3D 点：反投影初始化
     with torch.no_grad():
         u = (points2d[0, :, 0] - cx) / 1000.0
         v = (points2d[0, :, 1] - cy) / 1000.0
@@ -103,7 +95,6 @@ def main():
 
     points3d = points3d_init.requires_grad_(True)
 
-    # ========== 优化器：更保守的学习率 ==========
     optimizer = torch.optim.Adam([{
         'params': [focal],
         'lr': 1.0
@@ -140,7 +131,6 @@ def main():
 
         loss = total_error / num_visible
 
-        # 检查 NaN
         if torch.isnan(loss):
             print(f"\nNaN detected at epoch {epoch}!")
             print(f"Focal: {focal.item()}")
@@ -153,13 +143,11 @@ def main():
 
         loss.backward()
 
-        # 梯度裁剪
         torch.nn.utils.clip_grad_norm_(
             [focal, euler_angles, translations, points3d], max_norm=10.0)
 
         optimizer.step()
 
-        # 约束焦距为正
         with torch.no_grad():
             focal.clamp_(min=100.0, max=5000.0)
 
@@ -170,8 +158,6 @@ def main():
             print(
                 f"Epoch {epoch:4d} | RMSE: {rmse:7.2f} px | Focal: {focal.item():7.2f}"
             )
-
-    # ========== 保存结果 ==========
 
     if len(losses) > 0 and not np.isnan(losses[-1]):
         plt.figure(figsize=(10, 5))
