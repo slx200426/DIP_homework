@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is Kari's implementation of **Assignment 3** of DIP.  
+This repository is Linxuan Sun's implementation of **Assignment 3** of DIP.  
 It contains **two tasks**:
 
 1. **Bundle Adjustment Implementation**
