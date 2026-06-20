@@ -98,7 +98,6 @@ During optimization, intermediate reconstructions are stored automatically in `d
 - epoch_0060.png / epoch_0080.png: The geometry converges, and holes are filled by the expanded Gaussians.
 - epoch_0100.png: Represents a highly refined state with smooth color gradients and correct occlusion relationships.
 
-_(Below is an visual guide to adding your generated images manually or in markdown viewers)_
 ![Epoch 0000](data/chair/checkpoints/debug_images/epoch_0000.png)
 ![Epoch 0040](data/chair/checkpoints/debug_images/epoch_0040.png)
 ![Epoch 0100](data/chair/checkpoints/debug_images/epoch_0100.png)
