@@ -24,26 +24,6 @@ This project was developed and executed on a macOS system (e.g., MacBook M-serie
 
 ---
 
-## Project Structure
-
-04_3DGS
-├── README.md
-├── gaussian_model.py # 3D Gaussian representations & parameters (R, S, Opacity, Colors)
-├── gaussian_renderer.py # Pinhole projection, 2D Jacobian transformation, & Rasterizer
-├── train.py # Training loop with loss calculations
-├── render_3dgs_mv.py # Renders orbiting/multi-view camera path sequence
-└── data
-└── chair # COLMAP structure & raw data
-├── cameras.txt
-├── images.txt
-├── points3D.txt
-├── images/
-└── checkpoints/ # Training checkpoints and intermediate debug renders
-├── debug_images/ # Saved training progress visualizations (.png)
-└── debug_render.mp4
-
----
-
 ## Theory & Implementation Details
 
 ### 1. 3D Gaussian Representation
