@@ -32,3 +32,5 @@ env/
 
 # Optional logs
 *.log
+**/*.pt
+**/__pycache__/
